@@ -319,7 +319,7 @@ def main():
     count = 1
     for workflow in wfs:
             count += 1
-        #try:
+        try:
             #skip acdc's
             if workflow in allacdc:
                 print "[skipping %s]\n" % (workflow)
@@ -335,9 +335,9 @@ def main():
             wfinfo = getWorkflowInfo(workflow)
             print " %s\n" % (wfinfo['update'])
             struct.append(wfinfo)
-        #except Exception as e:
-        #    print e
-        #    print "error getting information for", workflow
+        except Exception as e:
+            print e
+            print "error getting information for", workflow
 
     #write to file
     f = open(afs_base + 'data.json','w')
